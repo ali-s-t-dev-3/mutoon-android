@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Mutoon"
 include(":app")
+include(":catalogue-core")
+include(":catalogue-tool")

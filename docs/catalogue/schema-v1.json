@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ali-s-t-dev-3/mutoon-android/blob/main/docs/catalogue/schema-v1.json",
+  "title": "Mutoon catalogue manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "books"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "books": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/book"
+      }
+    }
+  },
+  "$defs": {
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "titleAr",
+        "titleEn",
+        "pdfAsset",
+        "coverAsset",
+        "sha256",
+        "sortOrder"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "titleAr": {
+          "type": "string",
+          "minLength": 1
+        },
+        "titleEn": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pdfAsset": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coverAsset": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

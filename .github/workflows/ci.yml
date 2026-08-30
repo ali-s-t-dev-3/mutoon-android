@@ -41,6 +41,9 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v5
 
+      - name: Validate catalogue
+        run: ./gradlew --no-daemon --stacktrace validateCatalogue
+
       - name: Build debug APK
         run: ./gradlew --no-daemon --stacktrace assembleDebug
 

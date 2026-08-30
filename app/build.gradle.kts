@@ -53,6 +53,8 @@ kotlin {
 }
 
 dependencies {
+    implementation(project(":catalogue-core"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
 
@@ -64,4 +66,8 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     testImplementation(libs.junit4)
+}
+
+tasks.named("preBuild") {
+    dependsOn(rootProject.tasks.named("validateCatalogue"))
 }

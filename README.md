@@ -1,6 +1,6 @@
 # Mutoon
 
-Mutoon is an open-source Android app for browsing book covers and reading bundled PDFs entirely offline. This repository currently contains only the foundation established by [MUT-2](https://ali-t.atlassian.net/browse/MUT-2); the library and reader features are intentionally deferred to later tickets.
+Mutoon is an open-source Android app for browsing book covers and reading bundled PDFs entirely offline. The repository contains the Android foundation and the deterministic catalogue pipeline; the home library and reader remain intentionally deferred to later tickets.
 
 ## Product guardrails
 
@@ -46,16 +46,18 @@ Android Studio is optional. The free Android SDK command-line tools are sufficie
 From a fresh checkout on Windows PowerShell:
 
 ```powershell
-.\gradlew.bat clean assembleDebug lintDebug testDebugUnitTest
+.\gradlew.bat clean validateCatalogue assembleDebug lintDebug testDebugUnitTest test
 ```
 
 On macOS or Linux:
 
 ```sh
-./gradlew clean assembleDebug lintDebug testDebugUnitTest
+./gradlew clean validateCatalogue assembleDebug lintDebug testDebugUnitTest test
 ```
 
-The debug APK is generated under `app/build/outputs/apk/debug/`. GitHub Actions runs the build, lint, and unit-test checks for pull requests and pushes to `main`.
+The debug APK is generated under `app/build/outputs/apk/debug/`. GitHub Actions validates the catalogue and runs the build, lint, and unit-test checks for pull requests and pushes to `main`.
+
+The manifest contract, rights boundary, checksum command, and uncropped cover-generation procedure are documented in [Catalogue ingestion](docs/CATALOGUE_INGESTION.md).
 
 ## Contributing
 
